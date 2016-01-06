@@ -1,11 +1,10 @@
 package org.project.people;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.project.people.controller.PeopleController;
 import org.project.people.data.dao.GenericDao;
 import org.project.people.data.dao.PersonDaoImpl;
 import org.project.people.data.entity.Person;
-import org.project.people.data.util.ModelUtil;
+import org.project.people.data.util.EntityUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,7 +36,7 @@ public class Application {
 
     @Bean
     GenericDao<Person> getPersonDao(DataSource dataSource) {
-        return new PersonDaoImpl(dataSource, "person"/*ModelUtil.getTable(Person.class)*/);
+        return new PersonDaoImpl(dataSource, EntityUtil.getTable(Person.class));
     }
 }
 

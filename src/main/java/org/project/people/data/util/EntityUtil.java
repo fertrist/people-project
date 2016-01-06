@@ -4,6 +4,7 @@ package org.project.people.data.util;
 import org.project.people.data.entity.Person;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -11,12 +12,12 @@ import java.util.stream.Collectors;
 /**
  * Created by fertrist on 09.10.15.
  */
-public abstract class ModelUtil {
+public abstract class EntityUtil {
 
     private static Map<String, String> TABLE_NAMES;
 
     static {
-//        TABLE_NAMES = new LinkedHashMap<>();
+          TABLE_NAMES = new LinkedHashMap<>();
 //        TABLE_NAMES.put(GroupMember.class.getSimpleName(), "groupMembers");
 //        TABLE_NAMES.put(Group.class.getSimpleName(), "groups");
 //        TABLE_NAMES.put(Category.class.getSimpleName(), "categories");
