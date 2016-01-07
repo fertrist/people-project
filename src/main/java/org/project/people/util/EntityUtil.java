@@ -1,6 +1,7 @@
-package org.project.people.data.util;
+package org.project.people.util;
 
 
+import org.project.people.data.entity.Category;
 import org.project.people.data.entity.Person;
 
 import java.util.ArrayList;
@@ -20,7 +21,6 @@ public abstract class EntityUtil {
           TABLE_NAMES = new LinkedHashMap<>();
 //        TABLE_NAMES.put(GroupMember.class.getSimpleName(), "groupMembers");
 //        TABLE_NAMES.put(Group.class.getSimpleName(), "groups");
-//        TABLE_NAMES.put(Category.class.getSimpleName(), "categories");
 //        TABLE_NAMES.put(ChangeRecord.class.getSimpleName(), "changeRecords");
 //        TABLE_NAMES.put(DoneTraining.class.getSimpleName(), "doneTrainings");
 //        TABLE_NAMES.put(Training.class.getSimpleName(), "trainings");
@@ -33,6 +33,7 @@ public abstract class EntityUtil {
 //        TABLE_NAMES.put(Phone.class.getSimpleName(), "phones");
 //        TABLE_NAMES.put(Email.class.getSimpleName(), "emails");
         TABLE_NAMES.put(Person.class.getSimpleName(), "persons");
+        TABLE_NAMES.put(Category.class.getSimpleName(), "categories");
 //        TABLE_NAMES.put(Address.class.getSimpleName(), "addresses");
     }
 

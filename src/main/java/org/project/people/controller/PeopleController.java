@@ -3,6 +3,7 @@ package org.project.people.controller;
 import org.project.people.data.dao.GenericDao;
 import org.project.people.data.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +28,16 @@ public class PeopleController {
                 (i % 2 == 0), new Date(), (i %2 == 0), (i %2 == 0), i % 4, "Comment-" + i));
         }
         return persons;
+    }
+
+    @RequestMapping("/people/db")
+    List<Person> getAllPeopleDb() {
+        return personDao.list();
+    }
+
+    @RequestMapping("/people/{id}")
+    Person getAllPeopleDb(@PathVariable int id) {
+        return personDao.get(id);
     }
 
 }

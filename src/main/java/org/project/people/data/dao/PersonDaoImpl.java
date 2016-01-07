@@ -3,13 +3,13 @@ package org.project.people.data.dao;
 
 import org.project.people.data.entity.GroupMember;
 import org.project.people.data.entity.Person;
-import org.project.people.data.util.EntityUtil;
+import org.project.people.util.EntityUtil;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.project.people.data.util.TestUtil.*;
+import static org.project.people.util.TestUtil.*;
 import static org.springframework.util.StringUtils.isEmpty;
 
 
@@ -46,15 +46,15 @@ public class PersonDaoImpl extends DaoImplementation<Person> {
         }
         if (entity.getSex() != null) {
             fields.add("sex");
-            values.add(String.format(template, entity.getSex().booleanValue()));
+            values.add(String.format(template, getBool(entity.getSex())));
         }
         if (entity.isJew() != null) {
             fields.add("isJew");
-            values.add(String.format(template, entity.isJew().booleanValue()));
+            values.add(String.format(template, getBool(entity.isJew())));
         }
         if (entity.givesTithe() != null) {
             fields.add("givesTithe");
-            values.add(String.format(template, entity.givesTithe().booleanValue()));
+            values.add(String.format(template, getBool(entity.givesTithe())));
         }
         if (entity.getCategoryId() != 0) {
             fields.add("categoryId");

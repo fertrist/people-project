@@ -6,7 +6,7 @@ import org.project.people.controller.View;
 import java.util.Date;
 import java.util.List;
 
-import static org.project.people.data.util.TestUtil.getDateAsString;
+import static org.project.people.util.TestUtil.getDateAsString;
 
 
 /**

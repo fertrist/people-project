@@ -43,8 +43,8 @@ CREATE TABLE persons(
 	comment varchar(100),
 	wasAdded date DEFAULT GETDATE(),
 	CONSTRAINT ucFullName UNIQUE(firstName, midName, lastName),
-	FOREIGN KEY(categoryId) REFERENCES categories(id),
-	PRIMARY KEY(id)
+	FOREIGN KEY (categoryId) REFERENCES categories(id),
+	PRIMARY KEY (id)
 );
 ----------------------------------------------------TABLE
 CREATE TABLE tribes(
