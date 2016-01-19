@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Profile;
 
 import javax.sql.DataSource;
 
@@ -50,7 +51,11 @@ public class Application {
     static String[] categories = new String[]{"Белый", "Зелёный", "Гости", "Еврейский список"};
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+        SpringApplication springApplication = new SpringApplication(Application.class);
+        String prod = "prod";
+        String dev = "dev";
+        springApplication.setAdditionalProfiles(dev);
+        ConfigurableApplicationContext context = springApplication.run(args);
         DataBaseDao dataBaseDao = (DataBaseDao) context.getBean("getDataBaseDao");
         GenericDao<Category> categoryDao = (GenericDao<Category>) context.getBean("getCategoryDao");
         GenericDao<Person> personDao = (GenericDao<Person>) context.getBean("getPersonDao");
@@ -78,17 +83,18 @@ public class Application {
         dataBaseDao.dropTables(EntityUtil.getTableNames());
     }
 
-//    @Bean
-//    public DataSource getDevelopmentDataSource(){
-//        BasicDataSource dataSource = new BasicDataSource();
-//        dataSource.setDriverClassName("org.h2.Driver");
-//        dataSource.setUrl("jdbc:h2:mem:testDb");
-//        dataSource.setUsername("sa");
-//        dataSource.setPassword("");
-//        dataSource.setInitialSize(5);
-//        dataSource.setMaxActive(10);
-//        return dataSource;
-//    }
+    @Profile("dev")
+    @Bean
+    public DataSource getDevelopmentDataSource(){
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:h2:mem:testDb");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
+        dataSource.setInitialSize(5);
+        dataSource.setMaxActive(10);
+        return dataSource;
+    }
 
 //    @Bean DataSource getOracleDataSource() {
 //        BasicDataSource dataSource = new BasicDataSource();
@@ -98,6 +104,7 @@ public class Application {
 //        return dataSource;
 //    }
 
+    @Profile("prod")
     @Bean DataSource getMySqlDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
