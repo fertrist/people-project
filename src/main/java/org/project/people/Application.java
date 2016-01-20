@@ -15,6 +15,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import javax.sql.DataSource;
 
@@ -67,7 +69,7 @@ public class Application {
 //            for (Person person : persons) {
 //                System.out.println(personDao.save(person) == 1);
 //            }
-//        }catch (Exception e) {
+//        } catch (Exception e) {
 //            e.printStackTrace();
 //            dataBaseDao.dropTables(EntityUtil.getTableNames());
 //        } finally {
@@ -86,14 +88,19 @@ public class Application {
     @Profile("dev")
     @Bean
     public DataSource getDevelopmentDataSource(){
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:mem:testDb");
-        dataSource.setUsername("sa");
-        dataSource.setPassword("");
-        dataSource.setInitialSize(5);
-        dataSource.setMaxActive(10);
-        return dataSource;
+        return new EmbeddedDatabaseBuilder()
+            .setType(EmbeddedDatabaseType.H2)
+            .addScript("resources\\sql\\h2\\schema.sql")
+            .addScript("resources\\sql\\h2\\insert-values.sql").setScriptEncoding("UTF-8")
+            .build();
+//        BasicDataSource dataSource = new BasicDataSource();
+//        dataSource.setDriverClassName("org.h2.Driver");
+//        dataSource.setUrl("jdbc:h2:mem:testDb");
+//        dataSource.setUsername("sa");
+//        dataSource.setPassword("");
+//        dataSource.setInitialSize(5);
+//        dataSource.setMaxActive(10);
+//        return dataSource;
     }
 
 //    @Bean DataSource getOracleDataSource() {
