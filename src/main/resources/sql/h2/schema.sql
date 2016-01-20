@@ -1,15 +1,15 @@
 ------------------------------------------------------TABLE
---CREATE TABLE phones(
---	personId int NOT NULL,
---	phone varchar(60),
---	PRIMARY KEY(personId, phone)
---);
+CREATE TABLE phones(
+	personId int NOT NULL,
+	phone varchar(60),
+	PRIMARY KEY(personId, phone)
+);
 ------------------------------------------------------TABLE
---CREATE TABLE emails(
---	personId int NOT NULL,
---    email varchar(80),
---    PRIMARY KEY(personId, email)
---);
+CREATE TABLE emails(
+	personId int NOT NULL,
+    email varchar(80),
+    PRIMARY KEY(personId, email)
+);
 ----------------------------------------------------TABLE
 CREATE TABLE categories(
 	id int AUTO_INCREMENT,

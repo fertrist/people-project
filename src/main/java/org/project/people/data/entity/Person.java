@@ -10,7 +10,7 @@ import static org.project.people.util.TestUtil.getDateAsString;
 
 
 /**
- * Created by fertrist on 24.09.15.
+ * Entity to define a person.
  */
 public class Person {
 

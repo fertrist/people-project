@@ -1,9 +1,7 @@
 package org.project.people.data.dao;
 
 
-import org.project.people.data.entity.GroupMember;
 import org.project.people.data.entity.Person;
-import org.project.people.util.EntityUtil;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -148,7 +146,7 @@ public class PersonDaoImpl extends DaoImplementation<Person> {
     }
 
     public List<Person> listGroup(int groupId) {
-        String groupMembers = EntityUtil.getTable(GroupMember.class);
+        String groupMembers = "groupMembers";
         String sql = String.format("SELECT * FROM %1$s JOIN %2$s WHERE %3$s.id=%4$s.personId AND %5$s.groupId=%6$d",
             table, groupMembers, table, groupMembers, groupMembers, groupId);
         return operations.query(sql, (rs, numRow) -> {
@@ -168,7 +166,7 @@ public class PersonDaoImpl extends DaoImplementation<Person> {
     }
 
     public List<Person> listRegion(int id) {
-        String groupMembers = EntityUtil.getTable(GroupMember.class);
+        String groupMembers = "groupMembers";
         String sql = String.format("SELECT * FROM %1$s JOIN %2$s WHERE %3$s.id=%4$s.personId AND %5$s.groupId=%6$d",
             table, groupMembers, table, groupMembers, groupMembers, id);
         return operations.query(sql, (rs, numRow) -> {
@@ -188,7 +186,7 @@ public class PersonDaoImpl extends DaoImplementation<Person> {
     }
 
     public List<Person> listTribe(int id) {
-        String groupMembers = EntityUtil.getTable(GroupMember.class);
+        String groupMembers = "groupMembers";
         String sql = String.format("SELECT * FROM %1$s JOIN %2$s WHERE %3$s.id=%4$s.personId AND %5$s.groupId=%6$d",
             table, groupMembers, table, groupMembers, groupMembers, id);
         return operations.query(sql, (rs, numRow) -> {

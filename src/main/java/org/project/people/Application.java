@@ -7,6 +7,7 @@ import org.project.people.data.dao.GenericDao;
 import org.project.people.data.dao.PersonDaoImpl;
 import org.project.people.data.entity.Category;
 import org.project.people.data.entity.Person;
+import org.project.people.service.PersonService;
 import org.project.people.util.EntityUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -137,5 +138,9 @@ public class Application {
         return new DataBaseDao(dataSource);
     }
 
+    @Bean
+    public PersonService getPersonService() {
+        return new PersonService();
+    }
 }
 
