@@ -17,9 +17,6 @@ import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
-/**
- * Created by Павел on 06.01.2016.
- */
 @RestController
 public class PeopleController {
 
@@ -54,13 +51,15 @@ public class PeopleController {
     }
 
     @RequestMapping(value = "/people", method = POST)
-    int save(@RequestBody Person newPerson) {
-        return personService.save(newPerson);
+    @ResponseStatus(HttpStatus.OK)
+    void save(@RequestBody Person newPerson) {
+        personService.save(newPerson);
     }
 
     @RequestMapping(value = "/people/{id}", method = DELETE)
-    int deletePerson(@PathVariable int id) {
-        return personService.delete(id);
+    @ResponseStatus(HttpStatus.OK)
+    void deletePerson(@PathVariable int id) {
+        personService.delete(id);
     }
 
 }
