@@ -1,3 +1,10 @@
+CREATE TABLE users(
+    username VARCHAR(40) NOT NULL,
+    password VARCHAR(15) NOT NULL,
+    enabled boolean,
+    role VARCHAR(40) NOT NULL,
+    PRIMARY KEY(username)
+);
 ------------------------------------------------------TABLE
 CREATE TABLE phones(
 	personId int NOT NULL,
