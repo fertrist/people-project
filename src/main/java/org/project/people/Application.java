@@ -68,8 +68,8 @@ public class Application extends WebSecurityConfigurerAdapter {
         return new EmbeddedDatabaseBuilder()
             .setType(EmbeddedDatabaseType.H2)
             .setName(peopleDBName)
-            .addScript("resources\\sql\\h2\\schema.sql")
-            .addScript("resources\\sql\\h2\\insert-values.sql").setScriptEncoding("UTF-8")
+            .addScript("sql\\h2\\schema.sql")
+            .addScript("sql\\h2\\insert-values.sql").setScriptEncoding("UTF-8")
             .build();
 /*
         BasicDataSource dataSource = new BasicDataSource();
@@ -93,7 +93,7 @@ public class Application extends WebSecurityConfigurerAdapter {
         return new EmbeddedDatabaseBuilder()
             .setType(EmbeddedDatabaseType.H2)
             .setName(adminDbName)
-            .addScript("resources\\sql\\h2\\admin-script.sql")
+            .addScript("sql\\h2\\admin-script.sql")
             .build();
     }
 
